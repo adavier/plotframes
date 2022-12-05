@@ -109,7 +109,7 @@ function getDetails(input, cb){
 function getBitrate(input, details, progress, cb){
 	var 
 		// for regex
-		r_frame = /(?:media_type\=(\w+)\r?\n)(?:stream_index\=(\w+)\r?\n)(?:pkt_pts_time\=(\d*.?\d*)\r?\n)(?:pkt_size\=(\d+)\r?\n)(?:pict_type\=(\w+))?/,
+		r_frame = /(?:media_type\=(\w+)\r?\n)(?:stream_index\=(\w+)\r?\n)(?:pts_time\=(\d*.?\d*)\r?\n)(?:pkt_size\=(\d+)\r?\n)(?:pict_type\=(\w+))?/,
 		r,
 
 		// For frame arrays
@@ -137,7 +137,7 @@ function getBitrate(input, details, progress, cb){
 	var cli = child.spawn(
 		'ffprobe', [
 			'-show_entries',
-			'frame=stream_index,media_type,pict_type,pkt_size,pkt_pts_time',
+			'frame=stream_index,media_type,pict_type,pkt_size,pts_time',
 			input
 		]
 	);
